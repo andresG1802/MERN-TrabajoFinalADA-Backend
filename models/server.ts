@@ -3,7 +3,7 @@ import cors from 'cors';
 import db from '../db/connection';
 import userRoutes from '../routes/usuarios';
 import loginRoutes from '../routes/login';
-
+import dijkstraRoutes from '../routes/dijkstra';
 class Server {
     
     private app: Application;
@@ -11,6 +11,7 @@ class Server {
     private apiPaths = {
         usuarios: '/api/usuarios',
         login:'/api/login',
+        dijkstra:'/api/dijkstra'
     }
 
     constructor() {
@@ -52,6 +53,7 @@ class Server {
     {
         this.app.use(this.apiPaths.usuarios,userRoutes);
         this.app.use(this.apiPaths.login,loginRoutes);
+        this.app.use(this.apiPaths.dijkstra,dijkstraRoutes);
     }
     listen() {
         this.app.listen( this.port, () => {
