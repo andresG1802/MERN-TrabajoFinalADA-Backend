@@ -4,6 +4,8 @@ import db from '../db/connection';
 import userRoutes from '../routes/usuarios';
 import loginRoutes from '../routes/login';
 import dijkstraRoutes from '../routes/dijkstra';
+import aterrizajeRoutes from '../routes/aterrizaje';
+
 class Server {
     
     private app: Application;
@@ -11,7 +13,8 @@ class Server {
     private apiPaths = {
         usuarios: '/api/usuarios',
         login:'/api/login',
-        dijkstra:'/api/dijkstra'
+        dijkstra:'/api/dijkstra',
+        aterrizaje:'/api/aterrizaje'
     }
 
     constructor() {
@@ -54,6 +57,7 @@ class Server {
         this.app.use(this.apiPaths.usuarios,userRoutes);
         this.app.use(this.apiPaths.login,loginRoutes);
         this.app.use(this.apiPaths.dijkstra,dijkstraRoutes);
+        this.app.use(this.apiPaths.aterrizaje,aterrizajeRoutes);
     }
     listen() {
         this.app.listen( this.port, () => {

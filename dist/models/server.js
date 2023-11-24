@@ -18,12 +18,14 @@ const connection_1 = __importDefault(require("../db/connection"));
 const usuarios_1 = __importDefault(require("../routes/usuarios"));
 const login_1 = __importDefault(require("../routes/login"));
 const dijkstra_1 = __importDefault(require("../routes/dijkstra"));
+const aterrizaje_1 = __importDefault(require("../routes/aterrizaje"));
 class Server {
     constructor() {
         this.apiPaths = {
             usuarios: '/api/usuarios',
             login: '/api/login',
-            dijkstra: '/api/dijkstra'
+            dijkstra: '/api/dijkstra',
+            aterrizaje: '/api/aterrizaje'
         };
         this.app = (0, express_1.default)();
         this.port = '8080';
@@ -55,6 +57,7 @@ class Server {
         this.app.use(this.apiPaths.usuarios, usuarios_1.default);
         this.app.use(this.apiPaths.login, login_1.default);
         this.app.use(this.apiPaths.dijkstra, dijkstra_1.default);
+        this.app.use(this.apiPaths.aterrizaje, aterrizaje_1.default);
     }
     listen() {
         this.app.listen(this.port, () => {
