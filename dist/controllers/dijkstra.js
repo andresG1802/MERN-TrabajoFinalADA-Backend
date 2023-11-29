@@ -18,8 +18,9 @@ const arista_1 = __importDefault(require("../models/arista"));
 const postDijkstra = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { origen, destino } = req.body;
     const resultado = yield (0, dijkstra_1.dijkstra)(origen, destino);
+    const { distancia, ruta } = resultado;
     try {
-        return res.json({ caminoMasCorto: resultado });
+        return res.json({ caminoMasCorto: distancia, ruta: ruta });
     }
     catch (error) {
         res.status(500).json({

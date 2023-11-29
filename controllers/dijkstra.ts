@@ -7,9 +7,9 @@ export const postDijkstra =async (req: Request, res: Response) => {
     const {origen ,destino} = req.body;
      
     const resultado = await dijkstra(origen, destino);
-    
+    const {distancia,ruta} = resultado;
     try {
-        return res.json({ caminoMasCorto: resultado });
+        return res.json({ caminoMasCorto: distancia ,ruta:ruta });
     }
     catch (error) {
         res.status(500).json({
